@@ -18,11 +18,13 @@ def timing(f: callable):
 
 
 def naive_jaccard(a, b):
-    n, matched = len(a), 0
+    n, match, mismatch = len(a), 0, 0
     for i in range(n):
-        if a[i] == b[i]:
-            matched += 1
-    return matched / n
+        if a[i] == 1 and b[i] == 1:
+            match += 1
+        elif a[i] != 0 and b[i] != 0:
+            mismatch += 1
+    return match / (match + mismatch)
 
 
 @timing
